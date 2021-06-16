@@ -21,7 +21,7 @@ export default class Noneditable {
         // Backspace
         const selection = this.editor.selection.getNode();
         const selectionParent = selection.parentNode as Element;
-        const rng = this.editor.selection.getRng(false);
+        const rng = this.editor.selection.getRng();
         if (keycode === 8) {
             if (rng.startOffset > 0) {
                 return;
