@@ -1,8 +1,8 @@
-import {Editor, util} from 'tinymce';
+import {Editor} from 'tinymce';
 import Settings from './Settings';
 
 export default class BaseElement {
-    constructor(protected settings: Settings, protected editor: Editor, protected i18n: util.i18n) {
+    constructor(protected settings: Settings, protected editor: Editor, protected i18n) {
         this.getElement = this.getElement.bind(this);
         this.isElement = this.isElement.bind(this);
         this.getElementColumn = this.getElementColumn.bind(this);

@@ -4,13 +4,23 @@ export default class InsertColumn {
 
     constructor (private preset: IPreset) {}
 
-    public render(onSubmit: { (data: any): void; (data: any): void; }, args: { class?: string, selected?: {} }) {
+    public render(onSubmit: { (data: any): void; (data: any): void; }, args: { class?: string, selected?: {} }) : any {
         const selected = 'selected' in args ? args.selected : {};
         return {
             title: 'Insert column',
-            data: {},
-            body: [
-                ... this.preset.breakpoints.map((br) => this.breadpoint(br, selected))
+            body: {
+                type: 'panel',
+                items: this.preset.breakpoints.map((br) => this.breadpoint(br, selected))
+            },
+            buttons: [ // A list of footer buttons
+                {
+                  type: 'submit',
+                  text: 'OK',
+                },
+                {
+                  type: 'cancel',
+                  text: 'Cancel',
+                },
             ],
             onSubmit
         };
@@ -31,18 +41,22 @@ export default class InsertColumn {
 
     private breadpoint(breadpoint: Breakpoint, selected) {
         return {
-            type: 'container',
+            type: 'panel',
+            /*
             label: breadpoint.text,
             layout: 'flex',
             direction: 'row',
             align: 'center',
             spacing: 5,
+            */
             items: [
                 {
-                    type: 'listbox',
+                    type: 'selectbox',
                     name: breadpoint.value,
-                    value: breadpoint.value in selected ? selected[breadpoint.value] : '',
-                    values: this.preset.columns,
+                    label: breadpoint.value,
+                    disabled: false,
+                    // value: breadpoint.value in selected ? selected[breadpoint.value] : '',
+                    items: this.preset.columns,
                 },
             ]
         };

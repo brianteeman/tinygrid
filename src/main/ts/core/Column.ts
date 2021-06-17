@@ -1,4 +1,4 @@
-import { Editor, util } from 'tinymce';
+import { Editor } from 'tinymce';
 import InsertColumn from '../dialog/InsertColumn';
 import IPreset from '../presets/IPreset';
 import BaseElement from './BaseElement';
@@ -17,7 +17,7 @@ export default class Column extends BaseElement {
 
     private insertColumnDialog: InsertColumn;
 
-    constructor(protected settings: Settings, protected preset: IPreset, protected editor: Editor, protected i18n: util.i18n) {
+    constructor(protected settings: Settings, protected preset: IPreset, protected editor: Editor, protected i18n) {
         super(settings, editor, i18n);
 
         this.insertColumnDialog = new InsertColumn(this.preset);
@@ -31,34 +31,48 @@ export default class Column extends BaseElement {
         this.onInsertSubmit = this.onInsertSubmit.bind(this);
 
         // Commands
+        /*
         editor.addCommand(Column.CMD_INSERT_AFTER_COLUMN, this.insertAfter);
         editor.addCommand(Column.CMD_INSERT_BEFORE_COLUMN, this.insertBefore);
         editor.addCommand(Column.CMD_DELETE_COLUMN, this.delete);
         editor.addCommand(Column.CMD_PROPERTIES_COLUMN, this.properties);
+        */
 
         // Buttons
-        editor.addButton(Column.BTN_COLUMN_PROPERTIES, {
+        editor.ui.registry.addButton(Column.BTN_COLUMN_PROPERTIES, {
             icon: 'tablecellprops',
-            cmd: Column.CMD_PROPERTIES_COLUMN,
-            context: 'properties',
+            onAction: (event) => {
+                // Column.CMD_PROPERTIES_COLUMN
+                this.properties(event.isDisabled(), event.setDisabled)
+            },
+            text: 'properties',
             tooltip: i18n.translate('grid.column.properties'),
         });
-        editor.addButton(Column.BTN_COLUMN_INSERT_AFTER, {
+        editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_AFTER, {
             icon: 'tableinsertcolafter',
-            cmd: Column.CMD_INSERT_AFTER_COLUMN,
-            context: 'insert',
+            onAction: (event) => {
+                // Column.CMD_INSERT_AFTER_COLUMN
+                this.insertAfter(event.isDisabled(), event.setDisabled)
+            },
+            text: 'insert',
             tooltip: i18n.translate('grid.column.insert_after'),
         });
-        editor.addButton(Column.BTN_COLUMN_INSERT_BEFORE, {
+        editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_BEFORE, {
             icon: 'tableinsertcolbefore',
-            cmd: Column.CMD_INSERT_BEFORE_COLUMN,
-            context: 'insert',
+            onAction: (event) => {
+                // Column.CMD_INSERT_BEFORE_COLUMN
+                this.insertBefore(event.isDisabled(), event.setDisabled)
+            },
+            text: 'insert',
             tooltip: i18n.translate('grid.column.insert_before'),
         });
-        editor.addButton(Column.BTN_COLUMN_DELETE, {
+        editor.ui.registry.addButton(Column.BTN_COLUMN_DELETE, {
             icon: 'tabledeletecol',
-            cmd: Column.CMD_DELETE_COLUMN,
-            context: 'delete',
+            onAction: (event) => {
+                // Column.CMD_DELETE_COLUMN
+                this.delete(event.isDisabled(), event.setDisabled)
+            },
+            text: 'delete',
             tooltip: i18n.translate('grid.column.remove'),
         });
     }

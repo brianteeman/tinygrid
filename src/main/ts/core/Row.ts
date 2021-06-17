@@ -1,4 +1,4 @@
-import {Editor, util} from 'tinymce';
+import {Editor} from 'tinymce';
 import BaseElement from './BaseElement';
 import Settings from './Settings';
 import IPreset from '../presets/IPreset';
@@ -12,7 +12,7 @@ export default class Row extends BaseElement {
     public static readonly BTN_ROW_INSERT_BEFORE = 'row_insert_before';
     public static readonly BTN_ROW_DELETE = 'row_delete';
 
-    constructor(protected settings: Settings, protected preset: IPreset, protected editor: Editor, protected i18n: util.i18n) {
+    constructor(protected settings: Settings, protected preset: IPreset, protected editor: Editor, protected i18n) {
         super(settings, editor, i18n);
 
         // Binds commands
@@ -27,22 +27,28 @@ export default class Row extends BaseElement {
         editor.addCommand(Row.CMD_DELETE_ROW, this.delete);
 
         // Buttons
-        editor.addButton(Row.BTN_ROW_INSERT_AFTER, {
+        editor.ui.registry.addButton(Row.BTN_ROW_INSERT_AFTER, {
             icon: 'tableinsertrowafter',
-            cmd: Row.CMD_INSERT_AFTER_ROW,
-            context: 'insert',
+            onAction: function () {
+                Row.CMD_INSERT_AFTER_ROW
+            },
+            // context: 'insert',
             tooltip: i18n.translate('grid.row.insert_after'),
         });
-        editor.addButton(Row.BTN_ROW_INSERT_BEFORE, {
+        editor.ui.registry.addButton(Row.BTN_ROW_INSERT_BEFORE, {
             icon: 'tableinsertrowbefore',
-            cmd: Row.CMD_INSERT_BEFORE_ROW,
-            context: 'insert',
+            onAction: function () {
+                Row.CMD_INSERT_BEFORE_ROW
+            },
+            // context: 'insert',
             tooltip: i18n.translate('grid.row.insert_before'),
         });
-        editor.addButton(Row.BTN_ROW_DELETE, {
+        editor.ui.registry.addButton(Row.BTN_ROW_DELETE, {
             icon: 'tabledeleterow',
-            cmd: Row.CMD_DELETE_ROW,
-            context: 'delete',
+            onAction: function () {
+                Row.CMD_DELETE_ROW
+            },
+            // context: 'delete',
             tooltip: i18n.translate('grid.row.remove'),
         });
     }

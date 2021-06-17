@@ -1,4 +1,4 @@
-import { Editor, util } from 'tinymce';
+import { Editor } from 'tinymce';
 import BaseElement from './BaseElement';
 import Settings from './Settings';
 import Column from './Column';
@@ -11,7 +11,7 @@ export default class Grid extends BaseElement {
     public static readonly BTN_INSERT_GRID = 'grid_insert';
     public static readonly BTN_DELETE_GRID = 'grid_delete';
 
-    constructor(protected settings: Settings, protected preset: IPreset, protected editor: Editor, protected i18n: util.i18n) {
+    constructor(protected settings: Settings, protected preset: IPreset, protected editor: Editor, protected i18n) {
         super(settings, editor, i18n);
 
         // Binds commands
@@ -23,20 +23,27 @@ export default class Grid extends BaseElement {
         editor.addCommand(Grid.CMD_DELETE_GRID, this.delete);
 
         // Menu items
-        editor.addMenuItem(Grid.BTN_INSERT_GRID, {
+        editor.ui.registry.addMenuItem(Grid.BTN_INSERT_GRID, {
             icon: 'table',
             text: i18n.translate('grid.insert'),
-            cmd: Grid.CMD_INSERT_GRID,
-            context: 'insert'
+            onAction: function () {
+                Grid.CMD_INSERT_GRID
+            },
+            // context: 'insert'
         });
 
         // Buttons
-        editor.addButton(Grid.BTN_INSERT_GRID, {
+        editor.ui.registry.addButton(Grid.BTN_INSERT_GRID, {
             icon: 'table',
-            cmd: Grid.CMD_INSERT_GRID,
+            onAction: function () {
+                Grid.CMD_INSERT_GRID
+            }
         });
 
-        this.editor.addContextToolbar(this.isElementColumn, `${Grid.BTN_DELETE_GRID} | ${Column.BTN_COLUMN_PROPERTIES} ${Column.BTN_COLUMN_INSERT_AFTER} ${Column.BTN_COLUMN_INSERT_BEFORE} ${Column.BTN_COLUMN_DELETE} | ${Row.BTN_ROW_INSERT_AFTER} ${Row.BTN_ROW_INSERT_BEFORE} ${Row.BTN_ROW_DELETE}`);
+        editor.ui.registry.addContextToolbar('grid', {
+            predicate: this.isElementColumn,
+            items: `${Grid.BTN_DELETE_GRID} | ${Column.BTN_COLUMN_PROPERTIES} ${Column.BTN_COLUMN_INSERT_AFTER} ${Column.BTN_COLUMN_INSERT_BEFORE} ${Column.BTN_COLUMN_DELETE} | ${Row.BTN_ROW_INSERT_AFTER} ${Row.BTN_ROW_INSERT_BEFORE} ${Row.BTN_ROW_DELETE}`
+        });
     }
 
     /**
