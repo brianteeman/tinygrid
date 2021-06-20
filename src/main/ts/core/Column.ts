@@ -5,11 +5,6 @@ import BaseElement from './BaseElement';
 import Settings from './Settings';
 
 export default class Column extends BaseElement {
-    public static readonly CMD_INSERT_AFTER_COLUMN = 'columnInsertAfter';
-    public static readonly CMD_INSERT_BEFORE_COLUMN = 'columnInsertBefore';
-    public static readonly CMD_DELETE_COLUMN = 'columnDelete';
-    public static readonly CMD_PROPERTIES_COLUMN = 'columnProperties';
-
     public static readonly BTN_COLUMN_INSERT_AFTER = 'column_insert_after';
     public static readonly BTN_COLUMN_INSERT_BEFORE = 'column_insert_before';
     public static readonly BTN_COLUMN_DELETE = 'column_delete';
@@ -30,49 +25,37 @@ export default class Column extends BaseElement {
         this.properties = this.properties.bind(this);
         this.onInsertSubmit = this.onInsertSubmit.bind(this);
 
-        // Commands
-        /*
-        editor.addCommand(Column.CMD_INSERT_AFTER_COLUMN, this.insertAfter);
-        editor.addCommand(Column.CMD_INSERT_BEFORE_COLUMN, this.insertBefore);
-        editor.addCommand(Column.CMD_DELETE_COLUMN, this.delete);
-        editor.addCommand(Column.CMD_PROPERTIES_COLUMN, this.properties);
-        */
-
         // Buttons
         editor.ui.registry.addButton(Column.BTN_COLUMN_PROPERTIES, {
-            icon: 'tablecellprops',
+            icon: 'table-row-properties',
             onAction: (event) => {
-                // Column.CMD_PROPERTIES_COLUMN
                 this.properties(event.isDisabled(), event.setDisabled)
             },
             text: 'properties',
             tooltip: i18n.translate('grid.column.properties'),
         });
         editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_AFTER, {
-            icon: 'tableinsertcolafter',
+            icon: 'table-insert-column-after',
             onAction: (event) => {
-                // Column.CMD_INSERT_AFTER_COLUMN
                 this.insertAfter(event.isDisabled(), event.setDisabled)
             },
-            text: 'insert',
+            text: 'insert after',
             tooltip: i18n.translate('grid.column.insert_after'),
         });
         editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_BEFORE, {
-            icon: 'tableinsertcolbefore',
+            icon: 'table-insert-column-before',
             onAction: (event) => {
-                // Column.CMD_INSERT_BEFORE_COLUMN
                 this.insertBefore(event.isDisabled(), event.setDisabled)
             },
-            text: 'insert',
+            text: 'insert before',
             tooltip: i18n.translate('grid.column.insert_before'),
         });
         editor.ui.registry.addButton(Column.BTN_COLUMN_DELETE, {
-            icon: 'tabledeletecol',
+            icon: 'table-delete-column',
             onAction: (event) => {
-                // Column.CMD_DELETE_COLUMN
                 this.delete(event.isDisabled(), event.setDisabled)
             },
-            text: 'delete',
+            text: 'delete column',
             tooltip: i18n.translate('grid.column.remove'),
         });
     }
@@ -150,7 +133,7 @@ export default class Column extends BaseElement {
      *
      * @return  {boolean}
      */
-    private onInsertSubmit({data}, value: string) {
+    private onInsertSubmit(data, value: string) {
         const column: HTMLElement = <HTMLElement> this.getElementColumn();
         if (column) {
             if (value === 'after') {
@@ -176,7 +159,7 @@ export default class Column extends BaseElement {
         const column: HTMLElement = <HTMLElement> this.getElementColumn();
         if (column) {
             const selected = this.insertColumnDialog.getSelected(column.classList.value);
-            this.editor.windowManager.open(this.insertColumnDialog.render((event) => {
+            this.editor.windowManager.open(this.insertColumnDialog.render((data) => {
                 // Remove old
                 const removeClass = [];
                 column.classList.forEach((className) => {
@@ -188,9 +171,9 @@ export default class Column extends BaseElement {
                     column.classList.remove(className);
                 });
                 // Save new
-                for (const key in event.data) {
-                    if (event.data.hasOwnProperty(key)) {
-                        const element = event.data[key];
+                for (const key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        const element = data[key];
                         const breakpoint = this.preset.breakpoints.find((br) => br.value === key);
                         if (!element) {
                             continue;

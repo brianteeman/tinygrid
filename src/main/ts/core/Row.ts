@@ -4,10 +4,6 @@ import Settings from './Settings';
 import IPreset from '../presets/IPreset';
 
 export default class Row extends BaseElement {
-    public static readonly CMD_INSERT_AFTER_ROW = 'rowInsertAfter';
-    public static readonly CMD_INSERT_BEFORE_ROW = 'rowInsertBefore';
-    public static readonly CMD_DELETE_ROW = 'rowDelete';
-
     public static readonly BTN_ROW_INSERT_AFTER = 'row_insert_after';
     public static readonly BTN_ROW_INSERT_BEFORE = 'row_insert_before';
     public static readonly BTN_ROW_DELETE = 'row_delete';
@@ -21,34 +17,29 @@ export default class Row extends BaseElement {
         this.insertBefore = this.insertBefore.bind(this);
         this.delete = this.delete.bind(this);
 
-        // Commands
-        editor.addCommand(Row.CMD_INSERT_AFTER_ROW, this.insertAfter);
-        editor.addCommand(Row.CMD_INSERT_BEFORE_ROW, this.insertBefore);
-        editor.addCommand(Row.CMD_DELETE_ROW, this.delete);
-
         // Buttons
         editor.ui.registry.addButton(Row.BTN_ROW_INSERT_AFTER, {
-            icon: 'tableinsertrowafter',
-            onAction: function () {
-                Row.CMD_INSERT_AFTER_ROW
+            icon: 'table-insert-row-after',
+            onAction: (event) => {
+                this.insertAfter(event.isDisabled(), event.setDisabled)
             },
-            // context: 'insert',
+            text: 'insert after',
             tooltip: i18n.translate('grid.row.insert_after'),
         });
         editor.ui.registry.addButton(Row.BTN_ROW_INSERT_BEFORE, {
-            icon: 'tableinsertrowbefore',
-            onAction: function () {
-                Row.CMD_INSERT_BEFORE_ROW
+            icon: 'table-insert-row-above',
+            onAction: (event) => {
+                this.insertBefore(event.isDisabled(), event.setDisabled)
             },
-            // context: 'insert',
+            text: 'insert before',
             tooltip: i18n.translate('grid.row.insert_before'),
         });
         editor.ui.registry.addButton(Row.BTN_ROW_DELETE, {
-            icon: 'tabledeleterow',
-            onAction: function () {
-                Row.CMD_DELETE_ROW
+            icon: 'table-delete-row',
+            onAction: (event) => {
+                this.insertBefore(event.isDisabled(), event.setDisabled)
             },
-            // context: 'delete',
+            text: 'delete row',
             tooltip: i18n.translate('grid.row.remove'),
         });
     }

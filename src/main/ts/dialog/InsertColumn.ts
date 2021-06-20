@@ -12,6 +12,7 @@ export default class InsertColumn {
                 type: 'panel',
                 items: this.preset.breakpoints.map((br) => this.breadpoint(br, selected))
             },
+            initialData: this.initialData(this.preset.breakpoints, selected),
             buttons: [ // A list of footer buttons
                 {
                   type: 'submit',
@@ -22,7 +23,11 @@ export default class InsertColumn {
                   text: 'Cancel',
                 },
             ],
-            onSubmit
+            onSubmit: function (api) {
+                var data = api.getData();
+                onSubmit(data);
+                api.close();
+            }
         };
     }
 
@@ -42,23 +47,26 @@ export default class InsertColumn {
     private breadpoint(breadpoint: Breakpoint, selected) {
         return {
             type: 'panel',
-            /*
-            label: breadpoint.text,
-            layout: 'flex',
-            direction: 'row',
-            align: 'center',
-            spacing: 5,
-            */
             items: [
                 {
                     type: 'selectbox',
                     name: breadpoint.value,
                     label: breadpoint.value,
                     disabled: false,
-                    // value: breadpoint.value in selected ? selected[breadpoint.value] : '',
+                    value: breadpoint.value in selected ? selected[breadpoint.value] : '',
                     items: this.preset.columns,
                 },
             ]
         };
+    }
+
+    private initialData(breadpoints: Breakpoint[], selected) {
+        let initData = {}
+        breadpoints.forEach((br) => {
+            if(br.value in selected){
+                initData[br.value] = selected[br.value]
+            }
+        })
+        return initData
     }
 }
