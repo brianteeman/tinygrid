@@ -6,8 +6,6 @@ import Row from './Row';
 import IPreset from '../presets/IPreset';
 
 export default class Grid extends BaseElement {
-    public static readonly CMD_INSERT_GRID = 'gridInsert';
-    public static readonly CMD_DELETE_GRID = 'gridDelete';
     public static readonly BTN_INSERT_GRID = 'grid_insert';
     public static readonly BTN_DELETE_GRID = 'grid_delete';
 
@@ -18,25 +16,20 @@ export default class Grid extends BaseElement {
         this.insert = this.insert.bind(this);
         this.delete = this.delete.bind(this);
 
-        // Commands
-        editor.addCommand(Grid.CMD_INSERT_GRID, this.insert);
-        editor.addCommand(Grid.CMD_DELETE_GRID, this.delete);
-
         // Menu items
         editor.ui.registry.addMenuItem(Grid.BTN_INSERT_GRID, {
             icon: 'table',
             text: i18n.translate('grid.insert'),
-            onAction: function () {
-                Grid.CMD_INSERT_GRID
+            onAction: (event) => {
+                this.insert(event.isDisabled(), event.setDisabled)
             },
-            // context: 'insert'
         });
 
         // Buttons
         editor.ui.registry.addButton(Grid.BTN_INSERT_GRID, {
             icon: 'table',
-            onAction: function () {
-                Grid.CMD_INSERT_GRID
+            onAction: (event) => {
+                this.insert(event.isDisabled(), event.setDisabled)
             }
         });
 
