@@ -1,5 +1,6 @@
 import './../langs/pl';
 import './../langs/en';
+import './../langs/he_IL';
 import Noneditable from './core/Noneditable';
 import Grid from './core/Grid';
 import Row from './core/Row';
@@ -7,16 +8,12 @@ import Column from './core/Column';
 import { Editor } from 'tinymce';
 import Settings from './core/Settings';
 // Presets
-import Bootstrap3 from './presets/Bootstrap3';
-import Bootstrap4 from './presets/Bootstrap4';
-import Foundation5 from './presets/Foundation5';
+import Bootstrap5 from './presets/Bootstrap5';
 
 declare const tinymce: any;
 
 const presets = {
-    Bootstrap3,
-    Bootstrap4,
-    Foundation5,
+    Bootstrap5,
 };
 
 const resolvePreset = (settings: Settings, editor: Editor) => new presets[settings.preset]();

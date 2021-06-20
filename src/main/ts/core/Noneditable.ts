@@ -68,12 +68,9 @@ export default class Noneditable {
     }
 
     private onBeforeExecCommand(event) {
-        console.log('hola - 1')
         if (event.command === 'InsertOrderedList' || event.command === 'InsertUnorderedList' || event.command === 'InsertDefinitionList') {
-            console.log('hola - 2')
             const selection = this.editor.selection.getNode();
             this.classNames.forEach((name) => {
-                console.log('hola - 3')
                 if (selection.classList.contains(`${name}`)) {
                     event.preventDefault();
                     return false;

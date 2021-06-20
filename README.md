@@ -8,10 +8,7 @@ This is a fork from https://github.com/root913/tinymce-plugin-grid
 This fork version support TinyMCE 5 only.
 
 Supported css frameworks:
-* Bootstrap 3
-* Bootstrap 4
 * Bootstrap 5
-* Foundation CSS 5
 
 ## Demo
 
@@ -30,6 +27,6 @@ tinymce.init({
         'grid'
     ],
     toolbar: 'grid_insert',
-    grid_preset: 'Bootstrap3'
+    grid_preset: 'Bootstrap5'
 });
 ````

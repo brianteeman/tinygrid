@@ -2,7 +2,7 @@ import { Editor } from 'tinymce';
 import Settings from '../core/Settings';
 import IPreset, { Breakpoint, Column } from './IPreset';
 
-export default class Bootstrap4 implements IPreset {
+export default class Bootstrap5 implements IPreset {
 
     public readonly columns: Column[] = [
         {text: 'Select column', value: ''},
@@ -34,7 +34,7 @@ export default class Bootstrap4 implements IPreset {
      *
      * @return  {string}
      */
-    public style = (): string => 'bootstrap4.css';
+    public style = (): string => 'bootstrap5.css';
 
     /**
      * Returns regxp for column class

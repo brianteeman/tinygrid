@@ -2,9 +2,7 @@ import {Editor} from 'tinymce';
 
 export default class Settings {
     private static readonly presets = [
-        'Bootstrap3',
-        'Bootstrap4',
-        'Foundation5'
+        'Bootstrap5',
     ];
     constructor(protected editor: Editor) {}
 

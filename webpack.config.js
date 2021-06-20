@@ -39,6 +39,7 @@ const demoConfig = merge(config, {
     entry: {
         demo: './src/demo/ts/Demo.ts',
         'plugins/grid/plugin': './src/main/ts/Main.ts',
+        'plugins/grid/langs/he_IL': './src/main/langs/he_IL.js',
         'plugins/grid/langs/pl': './src/main/langs/en.js',
         'plugins/grid/langs/en': './src/main/langs/pl.js'
     },
@@ -62,17 +63,9 @@ const demoConfig = merge(config, {
                     to: 'index.html'
                 },
                 {
-                    from: './src/main/bootstrap3.css',
-                    to: 'plugins/grid/bootstrap3.css'
+                    from: './src/main/bootstrap5.css',
+                    to: 'plugins/grid/bootstrap5.css'
                 },
-                {
-                    from: './src/main/bootstrap4.css',
-                    to: 'plugins/grid/bootstrap4.css'
-                },
-                {
-                    from: './src/main/foundation5.css',
-                    to: 'plugins/grid/foundation5.css'
-                }
             ]
         }),
     ],
@@ -91,17 +84,9 @@ const distConfig = merge(config,{
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: './src/main/bootstrap3.css',
-                    to: 'bootstrap3.css'
+                    from: './src/main/bootstrap5.css',
+                    to: 'bootstrap5.css'
                 },
-                {
-                    from: './src/main/bootstrap4.css',
-                    to: 'bootstrap4.css'
-                },
-                {
-                    from: './src/main/foundation5.css',
-                    to: 'foundation5.css'
-                }
             ]
         })
     ],
@@ -115,6 +100,7 @@ const minDistConfig = merge(distConfig, {
     name: "minDist",
     entry: {
         plugin: './src/main/ts/Main.ts',
+        'langs/he_IL': './src/main/langs/he_IL.js',
         'langs/pl': './src/main/langs/en.js',
         'langs/en': './src/main/langs/pl.js',
     },

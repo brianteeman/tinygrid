@@ -31,7 +31,7 @@ export default class Column extends BaseElement {
             onAction: (event) => {
                 this.properties(event.isDisabled(), event.setDisabled)
             },
-            text: 'properties',
+            text: i18n.translate('grid.column.properties'),
             tooltip: i18n.translate('grid.column.properties'),
         });
         editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_AFTER, {
@@ -39,7 +39,7 @@ export default class Column extends BaseElement {
             onAction: (event) => {
                 this.insertAfter(event.isDisabled(), event.setDisabled)
             },
-            text: 'insert after',
+            text: i18n.translate('grid.column.insert_after'),
             tooltip: i18n.translate('grid.column.insert_after'),
         });
         editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_BEFORE, {
@@ -47,7 +47,7 @@ export default class Column extends BaseElement {
             onAction: (event) => {
                 this.insertBefore(event.isDisabled(), event.setDisabled)
             },
-            text: 'insert before',
+            text: i18n.translate('grid.column.insert_before'),
             tooltip: i18n.translate('grid.column.insert_before'),
         });
         editor.ui.registry.addButton(Column.BTN_COLUMN_DELETE, {
@@ -55,7 +55,7 @@ export default class Column extends BaseElement {
             onAction: (event) => {
                 this.delete(event.isDisabled(), event.setDisabled)
             },
-            text: 'delete column',
+            text: i18n.translate('grid.column.remove'),
             tooltip: i18n.translate('grid.column.remove'),
         });
     }
