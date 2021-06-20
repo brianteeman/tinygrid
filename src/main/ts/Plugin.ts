@@ -1,6 +1,3 @@
-import './../langs/pl';
-import './../langs/en';
-import './../langs/he_IL';
 import Noneditable from './core/Noneditable';
 import Grid from './core/Grid';
 import Row from './core/Row';

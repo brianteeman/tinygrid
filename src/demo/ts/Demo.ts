@@ -17,5 +17,6 @@ tinymce.init({
     ' removeformat | help | grid_insert',
     height : '250',
     language: 'he_IL',
+    directionality: 'rtl',
     grid_preset: 'Bootstrap5'
 });
