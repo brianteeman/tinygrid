@@ -1,12 +1,16 @@
-# Grid TinyMCE Plugin [![npm][npm-image]][npm-url]
+# Grid TinyMCE 5 Plugin [![npm][npm-image]][npm-url]
 [npm-image]: https://img.shields.io/npm/v/tinymce-plugin-codeblock.svg
 [npm-url]: https://npmjs.org/package/tinymce-plugin-codeblock
 
 This plugin allows you to use grid system in editor.
 
+This is a fork from https://github.com/root913/tinymce-plugin-grid
+This fork version support TinyMCE 5 only.
+
 Supported css frameworks:
 * Bootstrap 3
 * Bootstrap 4
+* Bootstrap 5
 * Foundation CSS 5
 
 ## Demo
