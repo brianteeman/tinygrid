@@ -6,7 +6,6 @@ declare let tinymce: any;
 Plugin();
 
 // Bootstrap3 demo
-/*
 tinymce.init({
     selector: 'textarea#bootstrap3',
     plugins: [
@@ -19,7 +18,6 @@ tinymce.init({
     height : '250',
     grid_preset: 'Bootstrap3'
 });
-*/
 
 // Bootstrap4 demo
 tinymce.init({
@@ -36,7 +34,6 @@ tinymce.init({
 });
 
 // Foundation demo
-/*
 tinymce.init({
     selector: 'textarea#foundation',
     plugins: [
@@ -49,4 +46,3 @@ tinymce.init({
     height : '250',
     grid_preset: 'Foundation5'
 });
-*/

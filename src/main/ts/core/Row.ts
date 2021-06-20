@@ -37,7 +37,7 @@ export default class Row extends BaseElement {
         editor.ui.registry.addButton(Row.BTN_ROW_DELETE, {
             icon: 'table-delete-row',
             onAction: (event) => {
-                this.insertBefore(event.isDisabled(), event.setDisabled)
+                this.delete(event.isDisabled(), event.setDisabled)
             },
             text: 'delete row',
             tooltip: i18n.translate('grid.row.remove'),
