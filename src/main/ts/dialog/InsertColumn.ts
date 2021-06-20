@@ -23,8 +23,8 @@ export default class InsertColumn {
                   text: 'Cancel',
                 },
             ],
-            onSubmit: function (api) {
-                var data = api.getData();
+            onSubmit: (api) => {
+                const data = api.getData();
                 onSubmit(data);
                 api.close();
             }
@@ -61,7 +61,7 @@ export default class InsertColumn {
     }
 
     private initialData(breadpoints: Breakpoint[], selected) {
-        let initData = {}
+        const initData = {}
         breadpoints.forEach((br) => {
             if(br.value in selected){
                 initData[br.value] = selected[br.value]
