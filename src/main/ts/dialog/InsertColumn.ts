@@ -10,7 +10,10 @@ export default class InsertColumn {
             title: 'Insert column',
             body: {
                 type: 'panel',
-                items: this.preset.breakpoints.map((br) => this.breadpoint(br, selected))
+                items: [
+                    ... this.preset.breakpoints.map((br) => this.breadpoint(br, selected)),
+                    ... this.preset.breakpoints.map((br) => this.selfAlignment(br, selected))
+                ],
             },
             initialData: this.initialData(this.preset.breakpoints, selected),
             buttons: [ // A list of footer buttons
@@ -55,6 +58,22 @@ export default class InsertColumn {
                     disabled: false,
                     value: breadpoint.value in selected ? selected[breadpoint.value] : '',
                     items: this.preset.columns,
+                },
+            ]
+        };
+    }
+
+    private selfAlignment(breadpoint: Breakpoint, selected) {
+        return {
+            type: 'panel',
+            items: [
+                {
+                    type: 'selectbox',
+                    name: 'self align: '+breadpoint.value,
+                    label: 'self align: '+breadpoint.value,
+                    disabled: false,
+                    value: breadpoint.value in selected ? selected[breadpoint.value] : '',
+                    items: this.preset.alignSelf,
                 },
             ]
         };

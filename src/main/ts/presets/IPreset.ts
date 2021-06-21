@@ -14,6 +14,7 @@ interface Breakpoint {
 
 interface IPreset {
     columns: Column[];
+    alignSelf: Column[];
     breakpoints: Breakpoint[];
     /**
      * Gets style url

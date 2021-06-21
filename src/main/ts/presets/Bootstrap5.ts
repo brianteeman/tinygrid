@@ -20,6 +20,16 @@ export default class Bootstrap5 implements IPreset {
         {text: '12', value: '12'}
     ];
 
+    public readonly alignSelf: Column[] = [
+        {text: 'Select self-align', value: ''},
+        {text: 'auto', value: 'auto'},
+        {text: 'start', value: 'start'},
+        {text: 'end', value: 'end'},
+        {text: 'center', value: 'center'},
+        {text: 'baseline', value: 'baseline'},
+        {text: 'stretch', value: 'stretch'},
+    ];
+
     public readonly breakpoints: Breakpoint[] = [
         {text: 'Extra small', value: 'extra_small', preffix: 'xs'},
         {text: 'Small', value: 'small', preffix: 'sm'},
