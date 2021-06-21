@@ -64,6 +64,15 @@ export default class Bootstrap5 implements IPreset {
     public columnClass = (breakpoint: string, column: string): string => `col-${breakpoint}-${column}`;
 
     /**
+     * Builds self-align class based on prefix and breakpoint
+     *
+     * @param {string} breakpoint
+     * @param {string} column
+     * @return {string}
+     */
+     public selfAlignClass = (breakpoint: string, alignment: string): string => `col-${breakpoint}-${alignment}`;
+
+    /**
      * Check if class is column
      *
      * @param {string} className

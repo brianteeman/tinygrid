@@ -174,11 +174,15 @@ export default class Column extends BaseElement {
                 for (const key in data) {
                     if (data.hasOwnProperty(key)) {
                         const element = data[key];
+                        console.log(data)
                         const breakpoint = this.preset.breakpoints.find((br) => br.value === key);
+                        console.log(breakpoint)
+                        console.log(element)
                         if (!element) {
                             continue;
                         }
-                        column.classList.add(this.preset.columnClass(breakpoint.preffix, element));
+                        // column.classList.add(this.preset.columnClass(breakpoint.preffix, element));
+                        // column.classList.add(this.preset.selfAlignClass(breakpoint.preffix, element));
                     }
                 }
             }, {

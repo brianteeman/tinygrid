@@ -69,8 +69,8 @@ export default class InsertColumn {
             items: [
                 {
                     type: 'selectbox',
-                    name: 'self align: '+breadpoint.value,
-                    label: 'self align: '+breadpoint.value,
+                    name: 'self_align_'+breadpoint.value,
+                    label: 'self_align_'+breadpoint.value,
                     disabled: false,
                     value: breadpoint.value in selected ? selected[breadpoint.value] : '',
                     items: this.preset.alignSelf,

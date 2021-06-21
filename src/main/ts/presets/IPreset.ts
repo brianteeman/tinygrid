@@ -38,6 +38,14 @@ interface IPreset {
      */
     columnClass(prefix: string, breakpoint: string): string;
     /**
+     * Builds self-align class based on prefix and breakpoint
+     *
+     * @param {string} prefix
+     * @param {string} breakpoint
+     * @return {string}
+     */
+     selfAlignClass(prefix: string, alignment: string): string;
+    /**
      * Check if class is column
      *
      * @param {string} className
