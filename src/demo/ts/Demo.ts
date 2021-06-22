@@ -15,7 +15,7 @@ tinymce.init({
     ' bold italic backcolor | alignleft aligncenter ' +
     ' alignright alignjustify | bullist numlist outdent indent |' +
     ' removeformat | help | grid_insert',
-    height : '250',
+    height : '600',
     language: 'he_IL',
     directionality: 'rtl',
     grid_preset: 'Bootstrap5'
