@@ -70,7 +70,7 @@ export default class Bootstrap5 implements IPreset {
      * @param {string} column
      * @return {string}
      */
-     public selfAlignClass = (breakpoint: string, alignment: string): string => `col-${breakpoint}-${alignment}`;
+     public selfAlignClass = (breakpoint: string, alignment: string): string => `align-self-${breakpoint}-${alignment}`;
 
     /**
      * Check if class is column
