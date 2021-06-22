@@ -181,7 +181,7 @@ export default class Column extends BaseElement {
                         let selectedKey = key
                         // Extract breakpoint value from selected key
                         propsPrefix.map((prop) => { selectedKey = selectedKey.replace(prop, '') })
-                        
+
                         const breakpoint = this.preset.breakpoints.find((br) => br.value === selectedKey);
                         if (!selectedValue) {
                             continue;

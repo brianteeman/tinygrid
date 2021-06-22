@@ -46,7 +46,7 @@ export default class InsertColumn {
                 column = match[1];
             }
             result[breadpoint.value] = column;
-            
+
             // Align-Self Classes
             const alignSelfMatch = this.preset.alignSelfClassRegex(breadpoint.preffix).exec(className);
             column = ''
