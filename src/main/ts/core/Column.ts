@@ -173,16 +173,26 @@ export default class Column extends BaseElement {
                 // Save new
                 for (const key in data) {
                     if (data.hasOwnProperty(key)) {
-                        const element = data[key];
-                        console.log(data)
-                        const breakpoint = this.preset.breakpoints.find((br) => br.value === key);
-                        console.log(breakpoint)
-                        console.log(element)
-                        if (!element) {
+                        const selectedValue = data[key];
+
+                        const propsPrefix = [
+                            'align_self_'
+                        ];
+                        let selectedKey = key
+                        // Extract breakpoint value from selected key
+                        propsPrefix.map((prop) => { selectedKey = selectedKey.replace(prop, '') })
+                        
+                        const breakpoint = this.preset.breakpoints.find((br) => br.value === selectedKey);
+                        if (!selectedValue) {
                             continue;
                         }
-                        // column.classList.add(this.preset.columnClass(breakpoint.preffix, element));
-                        // column.classList.add(this.preset.selfAlignClass(breakpoint.preffix, element));
+                        if(key.includes('align_self')){
+                            // align-self-x
+                            column.classList.add(this.preset.selfAlignClass(breakpoint.preffix, selectedValue));
+                        } else {
+                            // col-x-y
+                            column.classList.add(this.preset.columnClass(breakpoint.preffix, selectedValue));
+                        }
                     }
                 }
             }, {

@@ -55,6 +55,14 @@ export default class Bootstrap5 implements IPreset {
     public columnClassRegex = (columnPreffix: string): RegExp => new RegExp(`col-${columnPreffix}-([\\d]+)`, 'gi');
 
     /**
+     * Returns regxp for align-self class
+     *
+     * @param {string} columnPreffix
+     * @return {RegExp}
+     */
+     public alignSelfClassRegex = (columnPreffix: string): RegExp => new RegExp(`align-self-${columnPreffix}-(auto|start|end|center|baseline|stretch)`, 'gi');
+
+    /**
      * Builds column class based on prefix and breakpoint
      *
      * @param {string} breakpoint
