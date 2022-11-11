@@ -9,14 +9,14 @@ Plugin();
 tinymce.init({
     selector: 'textarea#bootstrap5',
     plugins: [
-        'grid'
+        'grid',
+        'code'
     ],
     toolbar: 'undo redo | formatselect | ' +
     ' bold italic backcolor | alignleft aligncenter ' +
     ' alignright alignjustify | bullist numlist outdent indent |' +
-    ' removeformat | help | grid_insert',
+    ' removeformat | code | grid_insert',
     height : '600',
-    language: 'he_IL',
-    directionality: 'rtl',
+    width: '1024',
     grid_preset: 'Bootstrap5'
 });

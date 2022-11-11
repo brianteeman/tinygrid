@@ -40,8 +40,8 @@ const demoConfig = merge(config, {
         demo: './src/demo/ts/Demo.ts',
         'plugins/grid/plugin': './src/main/ts/Main.ts',
         'plugins/grid/langs/he_IL': './src/main/langs/he_IL.js',
-        'plugins/grid/langs/pl': './src/main/langs/en.js',
-        'plugins/grid/langs/en': './src/main/langs/pl.js'
+        'plugins/grid/langs/pl': './src/main/langs/pl.js',
+        'plugins/grid/langs/en': './src/main/langs/en.js'
     },
     plugins: [
         new CopyWebpackPlugin({
