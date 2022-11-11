@@ -14,6 +14,7 @@ interface Breakpoint {
 
 interface IPreset {
     columns: Column[];
+    alignSelf: Column[];
     breakpoints: Breakpoint[];
     /**
      * Gets style url
@@ -29,6 +30,13 @@ interface IPreset {
      */
     columnClassRegex(columnPreffix: string): RegExp;
     /**
+     * Returns regxp for align-self class
+     *
+     * @param {string} columnPreffix
+     * @return {RegExp}
+     */
+     alignSelfClassRegex(columnPreffix: string): RegExp;
+    /**
      * Builds column class based on prefix and breakpoint
      *
      * @param {string} prefix
@@ -36,6 +44,14 @@ interface IPreset {
      * @return {string}
      */
     columnClass(prefix: string, breakpoint: string): string;
+    /**
+     * Builds self-align class based on prefix and breakpoint
+     *
+     * @param {string} prefix
+     * @param {string} breakpoint
+     * @return {string}
+     */
+     selfAlignClass(prefix: string, alignment: string): string;
     /**
      * Check if class is column
      *

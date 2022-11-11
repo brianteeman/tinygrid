@@ -73,7 +73,7 @@ export default class Column extends BaseElement {
     }
 
     /**
-     * Inserts Column element before selection
+     * Inserts Column element after selection
      *
      * @param   {boolean}  ui
      * @param   {any}      value
@@ -175,15 +175,24 @@ export default class Column extends BaseElement {
                     if (data.hasOwnProperty(key)) {
                         const selectedValue = data[key];
 
+                        const propsPrefix = [
+                            'align_self_'
+                        ];
                         let selectedKey = key
                         // Extract breakpoint value from selected key
+                        propsPrefix.map((prop) => { selectedKey = selectedKey.replace(prop, '') })
 
                         const breakpoint = this.preset.breakpoints.find((br) => br.value === selectedKey);
                         if (!selectedValue) {
                             continue;
                         }
-
-                        column.classList.add(this.preset.columnClass(breakpoint.preffix, selectedValue));
+                        if(key.includes('align_self')){
+                            // align-self-x
+                            column.classList.add(this.preset.selfAlignClass(breakpoint.preffix, selectedValue));
+                        } else {
+                            // col-x-y
+                            column.classList.add(this.preset.columnClass(breakpoint.preffix, selectedValue));
+                        }
                     }
                 }
             }, {
