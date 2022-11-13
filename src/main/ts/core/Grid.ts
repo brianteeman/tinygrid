@@ -25,7 +25,7 @@ export default class Grid extends BaseElement {
             },
         });
         // Buttons
-        editor.ui.registry.addButton(Grid.BTN_INSERT_GRID, {
+        editor.ui.registry.addButton('grid', {
             icon: 'table',
             onAction: (event) => {
                 this.insert(event.isDisabled(), event.setDisabled)
@@ -38,17 +38,17 @@ export default class Grid extends BaseElement {
             onAction: (event) => {
                 this.delete(event.isDisabled(), event.setDisabled)
             },
-            text: i18n.translate('grid.remove'),
+            //text: i18n.translate('grid.remove'),
             tooltip: i18n.translate('grid.remove'),
         });
-        editor.ui.registry.addGroupToolbarButton('grid', {
-            icon: 'table',
-            tooltip: i18n.translate('grid'),
-            items: `${Grid.BTN_INSERT_GRID} | ${Grid.BTN_DELETE_GRID} | ${Column.BTN_COLUMN_PROPERTIES} ${Column.BTN_COLUMN_INSERT_AFTER} ${Column.BTN_COLUMN_INSERT_BEFORE} ${Column.BTN_COLUMN_DELETE} | ${Row.BTN_ROW_INSERT_AFTER} ${Row.BTN_ROW_INSERT_BEFORE} ${Row.BTN_ROW_DELETE}`
-        });
-        editor.ui.registry.addContextToolbar('grid2', {
+        // editor.ui.registry.addGroupToolbarButton('grid', {
+        //     icon: 'table',
+        //     tooltip: i18n.translate('grid'),
+        //     items: `${Grid.BTN_INSERT_GRID} | ${Grid.BTN_DELETE_GRID} | ${Column.BTN_COLUMN_PROPERTIES} ${Column.BTN_COLUMN_INSERT_AFTER} ${Column.BTN_COLUMN_INSERT_BEFORE} ${Column.BTN_COLUMN_DELETE} | ${Row.BTN_ROW_INSERT_AFTER} ${Row.BTN_ROW_INSERT_BEFORE} ${Row.BTN_ROW_DELETE}`
+        // });
+        editor.ui.registry.addContextToolbar('grid', {
             predicate: this.isElementColumn,
-            items: `${Grid.BTN_DELETE_GRID} | ${Column.BTN_COLUMN_PROPERTIES} ${Column.BTN_COLUMN_INSERT_AFTER} ${Column.BTN_COLUMN_INSERT_BEFORE} ${Column.BTN_COLUMN_DELETE} | ${Row.BTN_ROW_INSERT_AFTER} ${Row.BTN_ROW_INSERT_BEFORE} ${Row.BTN_ROW_DELETE}`
+            items: `${Grid.BTN_DELETE_GRID} |  ${Row.BTN_ROW_INSERT_AFTER} ${Row.BTN_ROW_INSERT_BEFORE} ${Row.BTN_ROW_DELETE} | ${Column.BTN_COLUMN_PROPERTIES} ${Column.BTN_COLUMN_INSERT_AFTER} ${Column.BTN_COLUMN_INSERT_BEFORE} ${Column.BTN_COLUMN_DELETE}`
         });
     }
 

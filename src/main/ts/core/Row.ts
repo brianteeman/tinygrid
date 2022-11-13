@@ -23,7 +23,7 @@ export default class Row extends BaseElement {
             onAction: (event) => {
                 this.insertAfter(event.isDisabled(), event.setDisabled)
             },
-            text: i18n.translate('grid.row.insert_after'),
+            //text: i18n.translate('grid.row.insert_after'),
             tooltip: i18n.translate('grid.row.insert_after'),
         });
         editor.ui.registry.addButton(Row.BTN_ROW_INSERT_BEFORE, {
@@ -31,7 +31,7 @@ export default class Row extends BaseElement {
             onAction: (event) => {
                 this.insertBefore(event.isDisabled(), event.setDisabled)
             },
-            text: i18n.translate('grid.row.insert_before'),
+            //text: i18n.translate('grid.row.insert_before'),
             tooltip: i18n.translate('grid.row.insert_before'),
         });
         editor.ui.registry.addButton(Row.BTN_ROW_DELETE, {
@@ -39,7 +39,7 @@ export default class Row extends BaseElement {
             onAction: (event) => {
                 this.delete(event.isDisabled(), event.setDisabled)
             },
-            text: i18n.translate('grid.row.remove'),
+            //text: i18n.translate('grid.row.remove'),
             tooltip: i18n.translate('grid.row.remove'),
         });
     }

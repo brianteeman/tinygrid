@@ -21,6 +21,7 @@ export default class Bootstrap5 implements IPreset {
     ];
 
     public readonly breakpoints: Breakpoint[] = [
+        {text: 'All', value: '', prefix: ''},
         {text: 'Extra small', value: 'extra_small', prefix: '-xs'},
         {text: 'Small', value: 'small', prefix: '-sm'},
         {text: 'Medium', value: 'medium', prefix: '-md'},
