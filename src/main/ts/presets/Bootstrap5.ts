@@ -21,7 +21,7 @@ export default class Bootstrap5 implements IPreset {
     ];
 
     public readonly breakpoints: Breakpoint[] = [
-        {text: 'All', value: '', prefix: ''},
+        {text: 'All', value: 'all', prefix: ''},
         {text: 'Extra small', value: 'extra_small', prefix: '-xs'},
         {text: 'Small', value: 'small', prefix: '-sm'},
         {text: 'Medium', value: 'medium', prefix: '-md'},
@@ -99,11 +99,12 @@ export default class Bootstrap5 implements IPreset {
      * @return {Element}
      */
     public renderColumn(data): Element {
-        const xs = data.extra_small.length > 0 ? `col-sm-${data.extra_small}` : '';
+        const xs = data.extra_small.length > 0 ? `col-xs-${data.extra_small}` : '';
         const sm = data.small.length > 0 ? `col-sm-${data.small}` : '';
         const md = data.medium.length > 0 ? `col-md-${data.medium}` : '';
         const lg = data.large.length > 0 ? `col-lg-${data.large}` : '';
-        const className = `${xs} ${sm} ${md} ${lg}`;
+        const all = data.all.length > 0 ? `col-${data.all}` : '';
+        const className = `${xs} ${sm} ${md} ${lg} ${all}`;
         const node = `<div class="grid-col ${className.trim()}"></div>`;
 
         const div = document.createElement('div');

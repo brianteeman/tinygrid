@@ -25,39 +25,6 @@ export default class Column extends BaseElement {
         this.properties = this.properties.bind(this);
         this.onInsertSubmit = this.onInsertSubmit.bind(this);
 
-        // Buttons
-        editor.ui.registry.addButton(Column.BTN_COLUMN_PROPERTIES, {
-            icon: 'table-row-properties',
-            onAction: (event) => {
-                this.properties(event.isDisabled(), event.setDisabled)
-            },
-            text: i18n.translate('grid.column.properties'),
-            tooltip: i18n.translate('grid.column.properties'),
-        });
-        editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_AFTER, {
-            icon: 'table-insert-column-after',
-            onAction: (event) => {
-                this.insertAfter(event.isDisabled(), event.setDisabled)
-            },
-            text: i18n.translate('grid.column.insert_after'),
-            tooltip: i18n.translate('grid.column.insert_after'),
-        });
-        editor.ui.registry.addButton(Column.BTN_COLUMN_INSERT_BEFORE, {
-            icon: 'table-insert-column-before',
-            onAction: (event) => {
-                this.insertBefore(event.isDisabled(), event.setDisabled)
-            },
-            text: i18n.translate('grid.column.insert_before'),
-            tooltip: i18n.translate('grid.column.insert_before'),
-        });
-        editor.ui.registry.addButton(Column.BTN_COLUMN_DELETE, {
-            icon: 'table-delete-column',
-            onAction: (event) => {
-                this.delete(event.isDisabled(), event.setDisabled)
-            },
-            text: i18n.translate('grid.column.remove'),
-            tooltip: i18n.translate('grid.column.remove'),
-        });
     }
 
     /**
