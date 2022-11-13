@@ -11,5 +11,5 @@
     'grid.column.insert_after' : 'Insert column before',
     'grid.column.insert_before' : 'Insert column after',
     'grid.column.remove' : 'Delete column',
-    'grid.column.properties': 'Column properties'
+    'grid.column.properties': 'Column sizes'
 });

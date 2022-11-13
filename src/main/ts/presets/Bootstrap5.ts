@@ -21,10 +21,11 @@ export default class Bootstrap5 implements IPreset {
     ];
 
     public readonly breakpoints: Breakpoint[] = [
-        {text: 'Extra small', value: 'extra_small', preffix: 'xs'},
-        {text: 'Small', value: 'small', preffix: 'sm'},
-        {text: 'Medium', value: 'medium', preffix: 'md'},
-        {text: 'Large', value: 'large', preffix: 'lg'},
+        {text: 'All', value: '', prefix: ''},
+        {text: 'Extra small', value: 'extra_small', prefix: '-xs'},
+        {text: 'Small', value: 'small', prefix: '-sm'},
+        {text: 'Medium', value: 'medium', prefix: '-md'},
+        {text: 'Large', value: 'large', prefix: '-lg'},
     ];
 
     constructor(protected settings: Settings, protected editor: Editor) {}
@@ -39,10 +40,10 @@ export default class Bootstrap5 implements IPreset {
     /**
      * Returns regxp for column class
      *
-     * @param {string} columnPreffix
+     * @param {string} columnPrefix
      * @return {RegExp}
      */
-    public columnClassRegex = (columnPreffix: string): RegExp => new RegExp(`col-${columnPreffix}-([\\d]+)`, 'gi');
+    public columnClassRegex = (columnPrefix: string): RegExp => new RegExp(`col${columnPrefix}-([\\d]+)`, 'gi');
 
     /**
      * Builds column class based on prefix and breakpoint
@@ -51,7 +52,7 @@ export default class Bootstrap5 implements IPreset {
      * @param {string} column
      * @return {string}
      */
-    public columnClass = (breakpoint: string, column: string): string => `col-${breakpoint}-${column}`;
+    public columnClass = (breakpoint: string, column: string): string => `col${breakpoint}-${column}`;
 
     /**
      * Check if class is column
@@ -59,7 +60,7 @@ export default class Bootstrap5 implements IPreset {
      * @param {string} className
      * @return {boolean}
      */
-    public isColumn = (className: string): boolean => !!this.breakpoints.find((breakpoint) => !!this.columns.find((column) => this.columnClass(breakpoint.preffix, column.value) === className));
+    public isColumn = (className: string): boolean => !!this.breakpoints.find((breakpoint) => !!this.columns.find((column) => this.columnClass(breakpoint.prefix, column.value) === className));
 
     /**
      * Render container
@@ -70,7 +71,7 @@ export default class Bootstrap5 implements IPreset {
         const node = `
         <div class="grid-container container">
             <div class="grid-row row">
-                <div class="grid-col col-lg-12"></div>
+                <div class="grid-col col-12"></div>
             </div>
         </div>`;
         const div = document.createElement('div');
@@ -87,7 +88,7 @@ export default class Bootstrap5 implements IPreset {
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="grid-row row">
-            <div class="grid-col col-lg-12"></div>
+            <div class="grid-col col-12"></div>
         </div>`.trim();
         return div.firstChild as Element;
     }
@@ -111,3 +112,5 @@ export default class Bootstrap5 implements IPreset {
     }
 
 }
+
+

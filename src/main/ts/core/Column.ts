@@ -183,7 +183,7 @@ export default class Column extends BaseElement {
                             continue;
                         }
 
-                        column.classList.add(this.preset.columnClass(breakpoint.preffix, selectedValue));
+                        column.classList.add(this.preset.columnClass(breakpoint.prefix, selectedValue));
                     }
                 }
             }, {

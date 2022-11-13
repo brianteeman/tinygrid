@@ -9,7 +9,7 @@ interface Column {
 interface Breakpoint {
     text: string;
     value: string;
-    preffix: string;
+    prefix: string;
 }
 
 interface IPreset {
@@ -24,10 +24,10 @@ interface IPreset {
     /**
      * Returns regxp for column class
      *
-     * @param {string} columnPreffix
+     * @param {string} columnPrefix
      * @return {RegExp}
      */
-    columnClassRegex(columnPreffix: string): RegExp;
+    columnClassRegex(columnPrefix: string): RegExp;
     /**
      * Builds column class based on prefix and breakpoint
      *

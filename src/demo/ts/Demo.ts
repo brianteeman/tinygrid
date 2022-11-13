@@ -15,7 +15,7 @@ tinymce.init({
     toolbar: 'undo redo | formatselect | ' +
     ' bold italic backcolor | alignleft aligncenter ' +
     ' alignright alignjustify | bullist numlist outdent indent |' +
-    ' removeformat | code | grid_insert',
+    ' removeformat | code | grid |',
     height : '600',
     width: '1024',
     grid_preset: 'Bootstrap5'

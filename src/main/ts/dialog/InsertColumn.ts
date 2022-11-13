@@ -40,7 +40,7 @@ export default class InsertColumn {
             let column = '';
 
             // Cols classes
-            const match = this.preset.columnClassRegex(breadpoint.preffix).exec(className);
+            const match = this.preset.columnClassRegex(breadpoint.prefix).exec(className);
             if (match && match.length > 1) {
                 column = match[1];
             }
