@@ -12,9 +12,16 @@ interface Breakpoint {
     prefix: string;
 }
 
+interface All {
+    text: string;
+    value: string;
+    prefix: string;
+}
+
 interface IPreset {
     columns: Column[];
     breakpoints: Breakpoint[];
+    allsizes: All[];
     /**
      * Gets style url
      *
@@ -68,4 +75,4 @@ type IPresetConstructor = new(settings: Settings, editor: Editor) => IPreset;
 declare var IPreset: IPresetConstructor;
 
 export default IPreset;
-export {Column, Breakpoint};
+export {Column, Breakpoint, All};

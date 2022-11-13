@@ -9,10 +9,41 @@ export default class InsertColumn {
         return {
             title: 'Column sizes',
             body: {
-                type: 'panel',
-                items: [
-                    ... this.preset.breakpoints.map((br) => this.breadpoint(br, selected)),
-                ],
+                type: 'tabpanel',
+                tabs: [
+                    {
+                        name: 'general',
+                        title: 'General',
+                        items: [
+                        ... this.preset.breakpoints.map((br) => this.breadpoint(br, selected)),
+                        ],
+                    },
+                    {
+                        name: 'advanced',
+                        title: 'Responsive',
+                        items: [
+                                ... this.preset.allsizes.map((br) => this.breadpoint(br, selected)),
+                        ]
+                    },
+                    {
+                        name: 'advanced2',
+                        title: 'Responsive2',
+                        items: [
+                            {
+                                type: 'selectbox', // component type
+                                name: 'SelectA', // identifier
+                                label: 'Select Label',
+                                disabled: true, // disabled state
+                                size: 1, // number of visible values (optional)
+                                items: [
+                                  { value: 'one', text: 'One' },
+                                  { value: 'two', text: 'Two' }
+                                ]
+                              }
+                        ]
+                    }
+                ]
+
             },
             initialData: this.initialData(this.preset.breakpoints, selected),
             buttons: [ // A list of footer buttons

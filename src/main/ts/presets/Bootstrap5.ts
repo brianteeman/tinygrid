@@ -1,6 +1,6 @@
 import { Editor } from 'tinymce';
 import Settings from '../core/Settings';
-import IPreset, { Breakpoint, Column } from './IPreset';
+import IPreset, { Breakpoint, Column, All } from './IPreset';
 
 export default class Bootstrap5 implements IPreset {
 
@@ -21,13 +21,14 @@ export default class Bootstrap5 implements IPreset {
     ];
 
     public readonly breakpoints: Breakpoint[] = [
-        {text: 'All', value: 'all', prefix: ''},
         {text: 'Extra small', value: 'extra_small', prefix: '-xs'},
         {text: 'Small', value: 'small', prefix: '-sm'},
         {text: 'Medium', value: 'medium', prefix: '-md'},
         {text: 'Large', value: 'large', prefix: '-lg'},
     ];
-
+    public readonly allsizes: All[] = [
+        {text: 'All', value: '', prefix: ''},
+    ];
     constructor(protected settings: Settings, protected editor: Editor) {}
 
     /**
