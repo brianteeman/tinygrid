@@ -35,7 +35,7 @@ export default class Bootstrap5 implements IPreset {
      *
      * @return  {string}
      */
-    public style = (): string => 'bootstrap5.css';
+    public style = (): string => 'display-bs5.css';
 
     /**
      * Returns regxp for column class

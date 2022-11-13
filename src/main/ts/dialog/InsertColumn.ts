@@ -7,7 +7,7 @@ export default class InsertColumn {
     public render(onSubmit: { (data: any): void; (data: any): void; }, args: { class?: string, selected?: {} }) : any {
         const selected = 'selected' in args ? args.selected : {};
         return {
-            title: 'Insert column',
+            title: 'Column sizes',
             body: {
                 type: 'panel',
                 items: [

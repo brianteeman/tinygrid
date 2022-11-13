@@ -61,8 +61,8 @@ const demoConfig = merge(config, {
                     to: 'index.html'
                 },
                 {
-                    from: './src/main/bootstrap5.css',
-                    to: 'plugins/grid/bootstrap5.css'
+                    from: './src/main/display-bs5.css',
+                    to: 'plugins/grid/display-bs5.css'
                 },
             ]
         }),
@@ -82,8 +82,8 @@ const distConfig = merge(config,{
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: './src/main/bootstrap5.css',
-                    to: 'bootstrap5.css'
+                    from: './src/main/display-bs5.css',
+                    to: 'display-bs5.css'
                 },
             ]
         })
