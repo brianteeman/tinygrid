@@ -20,6 +20,16 @@ export default class Bootstrap5 implements IPreset {
         {text: '12', value: '12'}
     ];
 
+    public readonly alignSelf: Column[] = [
+        {text: 'Select self-align', value: ''},
+        {text: 'auto', value: 'auto'},
+        {text: 'start', value: 'start'},
+        {text: 'end', value: 'end'},
+        {text: 'center', value: 'center'},
+        {text: 'baseline', value: 'baseline'},
+        {text: 'stretch', value: 'stretch'},
+    ];
+
     public readonly breakpoints: Breakpoint[] = [
         {text: 'All', value: 'allsizes', prefix: ''},
         {text: 'Extra small', value: 'extra_small', prefix: '-xs'},
@@ -48,6 +58,14 @@ export default class Bootstrap5 implements IPreset {
     public columnClassRegex = (columnPrefix: string): RegExp => new RegExp(`col${columnPrefix}-([\\d]+)`, 'gi');
 
     /**
+     * Returns regxp for align-self class
+     *
+     * @param {string} columnPreffix
+     * @return {RegExp}
+     */
+    public alignSelfClassRegex = (columnPreffix: string): RegExp => new RegExp(`align-self${columnPreffix}-(auto|start|end|center|baseline|stretch)`, 'gi');
+
+    /**
      * Builds column class based on prefix and breakpoint
      *
      * @param {string} breakpoint
@@ -57,6 +75,15 @@ export default class Bootstrap5 implements IPreset {
     public columnClass = (breakpoint: string, column: string): string => `col${breakpoint}-${column}`;
 
     /**
+     * Builds self-align class based on prefix and breakpoint
+     *
+     * @param {string} breakpoint
+     * @param {string} column
+     * @return {string}
+     */
+     public selfAlignClass = (breakpoint: string, alignment: string): string => `align-self${breakpoint}-${alignment}`;
+
+     /**
      * Check if class is column
      *
      * @param {string} className

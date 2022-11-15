@@ -20,6 +20,7 @@ interface All {
 
 interface IPreset {
     columns: Column[];
+    alignSelf: Column[];
     breakpoints: Breakpoint[];
     allsizes: All[];
     /**
@@ -36,6 +37,14 @@ interface IPreset {
      */
     columnClassRegex(columnPrefix: string): RegExp;
     /**
+     * Returns regxp for align-self class
+     *
+     * @param {string} columnPrefix
+     * @return {RegExp}
+     */
+     alignSelfClassRegex(columnPrefix: string): RegExp;
+
+     /**
      * Builds column class based on prefix and breakpoint
      *
      * @param {string} prefix
@@ -44,6 +53,14 @@ interface IPreset {
      */
     columnClass(prefix: string, breakpoint: string): string;
     /**
+     * Builds self-align class based on prefix and breakpoint
+     *
+     * @param {string} prefix
+     * @param {string} breakpoint
+     * @return {string}
+     */
+     selfAlignClass(prefix: string, alignment: string): string;
+     /**
      * Check if class is column
      *
      * @param {string} className
